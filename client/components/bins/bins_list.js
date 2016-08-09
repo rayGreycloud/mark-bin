@@ -25,7 +25,6 @@ class BinsList extends Component {
   }
 
   render() {
-    console.log(this.props.bins);
     return (
       <ul className="list-group">
         {this.renderList()}
