@@ -3,12 +3,21 @@ import React, { Component } from 'react';
 class BinsShare extends Component {
   onShareClick() {
     const email = this.refs.email.value;
-    
+    Meteor.call('bins.share', this.props.bin, email);
+  }
+
+  renderShareList() {
+    return this.props.bin.sharedWith.map(email => {
+      return <button
+        key={email}
+        className="btn btn-default">
+          {email}
+        </button>
+    });
   }
 
   render() {
     return (
-      <div>
         <footer className="bins-share">
           <div className="input-group">
             <input ref="email" className="form-control" />
@@ -20,8 +29,11 @@ class BinsShare extends Component {
               </button>
             </div>
           </div>
+          <div>Shared With:</div>
+          <div className="btn-group">
+            {this.renderShareList()}
+          </div>
         </footer>
-      </div>
     );
   }
 }
