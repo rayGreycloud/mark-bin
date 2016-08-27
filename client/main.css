@@ -23,3 +23,36 @@
 .bins-share > div {
   margin: 0 10px;
 }
+
+li {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* starting state of animation */
+.fade-enter {
+  right: 100px;
+  opacity: 0;
+}
+
+/* ending state of animation */
+.fade-enter-active {
+  right: 0px;
+  opacity: 1.0;
+  transition: .5s ease-in all;
+}
+
+/* starting state of animation */
+.fade-leave {
+  right: 0px;
+  opacity: 1.0;
+}
+
+/* ending state of animation */
+.fade-leave-active {
+  right: -100px;
+  opacity: 0;
+  transition: .5s ease-out all;
+}

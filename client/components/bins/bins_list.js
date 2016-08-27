@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bins } from '../../../imports/collections/bins';
 import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class BinsList extends Component {
   onBinRemove(bin) {
@@ -25,9 +26,17 @@ class BinsList extends Component {
   }
 
   render() {
+    const transitionOptions = {
+      transitionName: "fade",
+      transitionEnterTimeout: 500,
+      transitionLeaveTimeout: 500
+    };
+
     return (
       <ul className="list-group">
-        {this.renderList()}
+        <ReactCSSTransitionGroup {...transitionOptions}>
+          {this.renderList()}
+        </ReactCSSTransitionGroup>
       </ul>
     );
   }
